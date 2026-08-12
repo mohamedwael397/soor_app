@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:soor_app/Login%20screen/login_screen.dart';
 import 'package:soor_app/Register%20screen/register_screen.dart';
 import 'package:soor_app/conistans/constans.dart';
 

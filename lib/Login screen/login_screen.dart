@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gap/gap.dart';
+import 'package:soor_app/Forget%20password/forget_password.dart';
 import 'package:soor_app/Register%20screen/register_screen.dart';
 import 'package:soor_app/conistans/constans.dart';
 
@@ -72,9 +72,7 @@ class LoginScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             SvgPicture.asset("assets/images/Asset 2 1.svg"),
-
                             const SizedBox(height: 15),
-
                             Text(
                               "مرحباً بك مرة أخرى!",
                               style: TextStyle(
@@ -143,12 +141,22 @@ class LoginScreen extends StatelessWidget {
 
                             const SizedBox(height: 25),
 
-                            Text(
-                              "هل نسيت كلمة المرور؟",
-                              style: TextStyle(
-                                color: AppTheme.primaryColor,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14,
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ForgetPassword(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                "هل نسيت كلمة المرور؟",
+                                style: TextStyle(
+                                  color: AppTheme.primaryColor,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                ),
                               ),
                             ),
 
