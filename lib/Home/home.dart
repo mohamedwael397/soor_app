@@ -27,32 +27,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.fieldBackground,
-      appBar: AppBar(
-        backgroundColor: AppTheme.fieldBackground,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppTheme.fieldBorder,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SvgPicture.asset(
-                "assets/images/icon.svg",
-                width: 25,
-                height: 25,
-              ),
-            ),
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: SvgPicture.asset("assets/images/Asset 2 1.svg"),
-          ),
-        ],
-      ),
 
       body: Screens[current_index],
 
@@ -69,22 +43,15 @@ class _HomeState extends State<Home> {
         ),
         child: BottomNavigationBar(
           backgroundColor: AppTheme.fieldBorder,
-
           elevation: 0,
-
           type: BottomNavigationBarType.fixed,
-
           currentIndex: current_index,
-
           selectedItemColor: AppTheme.primaryColor,
           unselectedItemColor: Colors.grey,
-
           selectedFontSize: 12,
           unselectedFontSize: 11,
-
           showSelectedLabels: true,
           showUnselectedLabels: true,
-
           onTap: (index) {
             setState(() {
               current_index = index;
@@ -114,12 +81,12 @@ class _HomeState extends State<Home> {
             // الخدمات
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
-                "assets/images/Frame63.svg",
+                "assets/images/Frame62.svg",
                 width: 24,
                 height: 24,
               ),
               activeIcon: SvgPicture.asset(
-                "assets/images/Frame63.svg",
+                "assets/images/Frame62.svg",
                 width: 24,
                 height: 24,
                 colorFilter: ColorFilter.mode(

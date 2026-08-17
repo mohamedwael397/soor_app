@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:soor_app/conistans/constans.dart';
 
@@ -54,7 +55,34 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.fieldBackground,
+      backgroundColor: AppTheme.background,
+      appBar: AppBar(
+        backgroundColor: AppTheme.fieldBackground,
+        leading: IconButton(
+          onPressed: () {},
+          icon: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppTheme.fieldBorder,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SvgPicture.asset(
+                "assets/images/icon.svg",
+                width: 25,
+                height: 25,
+              ),
+            ),
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: SvgPicture.asset("assets/images/Asset 2 1.svg"),
+          ),
+        ],
+      ),
+
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
@@ -68,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: double.infinity,
                     height: 220,
                     decoration: BoxDecoration(
-                      color: AppTheme.fieldBackground,
+                      color: AppTheme.background,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     clipBehavior: Clip.antiAlias,
@@ -302,57 +330,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     rating: 3,
                   ),
                 ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CustomCircleButton extends StatelessWidget {
-  final IconData icon;
-  final Gradient backgroundColor;
-  final String text;
-  final VoidCallback? onTap;
-
-  const CustomCircleButton({
-    super.key,
-    required this.icon,
-    required this.backgroundColor,
-    required this.text,
-    this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 100,
-        height: 100,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          gradient: backgroundColor,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(icon, color: Colors.white, size: 38),
-
-              const SizedBox(height: 5),
-
-              Text(
-                text,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
               ),
             ],
           ),

@@ -2,10 +2,77 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static const primaryColor = Color(0xff9E6A00);
+  static const background = Color(0xff0D0D0D);
   static const fieldBackground = Color(0xFF1C1C1E);
   static const fieldBorder = Color(0xFF2A2A2C);
   static const labelColor = Colors.white;
   static const hintColor = Color(0xFF8A8A8E);
+}
+
+class CustomCircleButton extends StatelessWidget {
+  final IconData icon;
+  final Gradient backgroundColor;
+  final String text;
+  final VoidCallback? onTap;
+
+  const CustomCircleButton({
+    super.key,
+    required this.icon,
+    required this.backgroundColor,
+    required this.text,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 100,
+        height: 100,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: backgroundColor,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, color: Colors.white, size: 38),
+
+              const SizedBox(height: 5),
+
+              Text(
+                text,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class AppColors {
+  static const Color white = Color(0xffFFFFFF);
+  static const Color black = Color(0xff000000);
+
+  static const Color darkBg = Color(0xff0D0D0D);
+  static const Color appBarBg = Color(0xff141414);
+  static const Color inputBg = Color(0xff212121);
+  static const Color inputBorder = Color(0xff2E2E2E);
+  static const Color textMuted = Color(0xff878787);
+  static const Color textSoft = Color(0xffD0D5DD);
+  static const Color gold = Color(0xffC89100);
+  static const Color goldDark = Color(0xff9E6A00);
+  static const Color indicator = Color(0xff474747);
 }
 
 typedef MyValidator = String? Function(String?);
