@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:soor_app/Home/Chat/cahtScreen.dart';
 import 'package:soor_app/conistans/constans.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -56,6 +57,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.background,
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Cahtscreen()),
+          );
+        },
+        shape: const CircleBorder(),
+        backgroundColor: AppTheme.primaryColor,
+        child: Icon(Icons.chat, color: AppTheme.labelColor),
+      ),
       appBar: AppBar(
         backgroundColor: AppTheme.fieldBackground,
         leading: IconButton(
