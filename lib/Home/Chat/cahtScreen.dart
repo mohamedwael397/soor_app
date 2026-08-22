@@ -143,7 +143,7 @@ class Cahtscreen extends StatelessWidget {
                     Text(
                       "09:15",
                       style: TextStyle(
-                        color: AppTheme.labelColor.withOpacity(0.5),
+                        color: AppTheme.labelColor.withValues(alpha: 0.5),
                         fontSize: 10,
                       ),
                     ),
@@ -237,7 +237,7 @@ class Cahtscreen extends StatelessWidget {
                     Text(
                       "09:15",
                       style: TextStyle(
-                        color: AppTheme.labelColor.withOpacity(0.5),
+                        color: AppTheme.labelColor.withValues(alpha: 0.5),
                         fontSize: 10,
                       ),
                     ),
@@ -261,7 +261,9 @@ class Cahtscreen extends StatelessWidget {
               Expanded(
                 child: TextFormFieldWidget(
                   controller: chatcontroller,
-                  validator: (value) {},
+                  validator: (value) {
+                    return null;
+                  },
                   hintText: "رسالتك هنا",
                   label: "",
                 ),

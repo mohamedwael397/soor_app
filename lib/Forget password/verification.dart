@@ -157,8 +157,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppTheme.primaryColor,
-                    disabledBackgroundColor: AppTheme.primaryColor.withOpacity(
-                      0.4,
+                    disabledBackgroundColor: AppTheme.primaryColor.withValues(
+                      alpha: 0.4,
                     ),
                     elevation: 0,
                     shape: RoundedRectangleBorder(

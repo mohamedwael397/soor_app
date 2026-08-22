@@ -43,6 +43,7 @@ dependencies:
   geocoding: ^3.0.0
   date_format: ^2.0.9
   intl: ^0.20.3
+  settings_ui: ^3.0.1
 
 dev_dependencies:
   flutter_test:

@@ -3,7 +3,7 @@ import 'package:soor_app/Home/Location/location_screen.dart';
 import 'package:soor_app/conistans/constans.dart';
 
 class ServicesScreen extends StatelessWidget {
-  ServicesScreen({super.key});
+  const ServicesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:soor_app/Home/appointment_screens.dart';
 import 'package:soor_app/Home/home_screen.dart';
-import 'package:soor_app/Home/more_screen.dart';
+import 'package:soor_app/Home/more%20Screen/more_screen.dart';
 import 'package:soor_app/Home/services_screen.dart';
 import 'package:soor_app/conistans/constans.dart';
 
@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
           color: AppTheme.fieldBorder,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.08),
+              color: Colors.black.withValues(alpha: 0.08),
               blurRadius: 15,
               offset: const Offset(0, -3),
             ),

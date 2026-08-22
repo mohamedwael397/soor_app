@@ -116,7 +116,7 @@ class _ConfirmLocationScreenState extends State<ConfirmLocationScreen> {
                     width: 45,
                     height: 45,
                     decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(.15),
+                      color: Colors.black.withValues(alpha: .15),
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
