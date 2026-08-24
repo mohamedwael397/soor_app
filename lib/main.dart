@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:soor_app/Home/home.dart';
 import 'package:soor_app/conistans/constans.dart';
+import 'package:soor_app/features/home/home.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

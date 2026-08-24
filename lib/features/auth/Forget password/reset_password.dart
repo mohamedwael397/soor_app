@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:soor_app/Forget%20password/password_changed.dart';
 import 'package:soor_app/conistans/constans.dart';
+import 'package:soor_app/features/auth/Forget%20password/password_changed.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:soor_app/Forget%20password/reset_password.dart';
 import 'package:soor_app/conistans/constans.dart';
+import 'package:soor_app/features/auth/Forget%20password/reset_password.dart';
 
 class VerificationScreen extends StatefulWidget {
   const VerificationScreen({super.key});

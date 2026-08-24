@@ -1,9 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:soor_app/Forget%20password/forget_password.dart';
-import 'package:soor_app/Register%20screen/register_screen.dart';
+
 import 'package:soor_app/conistans/constans.dart';
+import 'package:soor_app/features/auth/Forget%20password/forget_password.dart';
+import 'package:soor_app/features/auth/Register%20screen/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:soor_app/Home/more%20Screen/account_screen.dart';
-import 'package:soor_app/Home/more%20Screen/chat_history.dart';
-import 'package:soor_app/Home/more%20Screen/info_screen.dart';
+
 import 'package:soor_app/conistans/constans.dart';
+import 'package:soor_app/features/home/more%20Screen/account_screen.dart';
+import 'package:soor_app/features/home/more%20Screen/chat_history.dart';
+import 'package:soor_app/features/home/more%20Screen/info_screen.dart';
 
 class CardActionItem {
   final Widget icon;

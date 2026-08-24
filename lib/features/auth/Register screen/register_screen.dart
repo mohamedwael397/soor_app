@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:soor_app/Login%20screen/login_screen.dart';
 import 'package:soor_app/conistans/constans.dart';
+import 'package:soor_app/features/auth/Login%20screen/login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});

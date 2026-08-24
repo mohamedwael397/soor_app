@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:soor_app/Home/Location/details_screen.dart';
 import 'package:soor_app/conistans/constans.dart';
+import 'package:soor_app/features/home/Location/details_screen.dart';
 
 class ConfirmLocationScreen extends StatefulWidget {
   final String locationName;
