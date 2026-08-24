@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:soor_app/conistans/constans.dart';
-import 'package:soor_app/features/home/Chat/cahtScreen.dart';
+import 'package:soor_app/core/const/constans.dart';
+import 'package:soor_app/features/Chat/cahtScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:soor_app/conistans/constans.dart';
+import 'package:soor_app/core/const/constans.dart';
 import 'package:soor_app/features/home/appointment_screens.dart';
 import 'package:soor_app/features/home/home_screen.dart';
-import 'package:soor_app/features/home/more%20Screen/more_screen.dart';
 import 'package:soor_app/features/home/services_screen.dart';
+import 'package:soor_app/features/more%20Screen/more_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -15,7 +15,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int current_index = 0;
-
   final List<Widget> Screens = [
     HomeScreen(),
     ServicesScreen(),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:soor_app/conistans/constans.dart';
-import 'package:soor_app/features/home/Location/confirm_location.dart';
+import 'package:soor_app/core/const/constans.dart';
+import 'package:soor_app/features/Location/confirm_location.dart';
 
 class LocationScreen extends StatefulWidget {
   const LocationScreen({super.key});

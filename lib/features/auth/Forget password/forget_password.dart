@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:soor_app/conistans/constans.dart';
+import 'package:soor_app/core/const/constans.dart';
 import 'package:soor_app/features/auth/Forget%20password/verification.dart';
 
 class ForgetPassword extends StatelessWidget {

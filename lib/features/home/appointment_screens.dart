@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:soor_app/conistans/constans.dart';
-import 'package:soor_app/features/home/booking_details/booking_details_screen.dart';
+import 'package:soor_app/core/const/constans.dart';
+import 'package:soor_app/features/booking_details/booking_details_screen.dart';
 
 class AppointmentScreens extends StatelessWidget {
   AppointmentScreens({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:soor_app/conistans/constans.dart';
+import 'package:soor_app/core/const/constans.dart';
 
 class PasswordChanged extends StatelessWidget {
   const PasswordChanged({super.key});

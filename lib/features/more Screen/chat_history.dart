@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:soor_app/conistans/constans.dart';
+import 'package:soor_app/core/const/constans.dart';
 
 class ChatHistory extends StatelessWidget {
   const ChatHistory({super.key});

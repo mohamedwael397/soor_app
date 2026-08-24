@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soor_app/conistans/constans.dart';
+import 'package:soor_app/core/const/constans.dart';
 
 /// شاشة "الشروط والأحكام" لتطبيق سور Soor
 class InfoScreen extends StatelessWidget {

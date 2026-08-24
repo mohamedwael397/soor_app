@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:soor_app/conistans/constans.dart';
-import 'package:soor_app/features/home/Location/location_screen.dart';
+import 'package:soor_app/core/const/constans.dart';
+import 'package:soor_app/features/Location/location_screen.dart';
 
 class ServicesScreen extends StatelessWidget {
   const ServicesScreen({super.key});

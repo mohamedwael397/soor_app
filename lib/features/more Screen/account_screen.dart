@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soor_app/conistans/constans.dart';
+import 'package:soor_app/core/const/constans.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
