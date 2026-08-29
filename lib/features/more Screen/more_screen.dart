@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:soor_app/core/const/constans.dart';
+import 'package:soor_app/core/utils/storage_helper.dart';
+import 'package:soor_app/features/auth/Login screen/login_screen.dart';
+import 'package:soor_app/features/auth/logic/auth_cubit.dart';
+import 'package:soor_app/features/auth/logic/auth_state.dart';
 
 import 'package:soor_app/features/more%20Screen/account_screen.dart';
 import 'package:soor_app/features/more%20Screen/chat_history.dart';
@@ -19,67 +24,27 @@ class CardActionItem {
   });
 }
 
-class MoreScreen extends StatelessWidget {
-  MoreScreen({super.key});
+class MoreScreen extends StatefulWidget {
+  const MoreScreen({super.key});
+
+  @override
+  State<MoreScreen> createState() => _MoreScreenState();
+}
+
+class _MoreScreenState extends State<MoreScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // جيب البروفايل أول ما الشاشة تفتح
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<AuthCubit>().fetchProfile();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final List<CardActionItem> actions = [
-      CardActionItem(
-        icon: SvgPicture.asset(
-          'assets/images/globe-02.svg',
-          width: 20,
-          height: 20,
-        ),
-        label: 'اللغة',
-        onTap: () {
-          print('اللغة');
-        },
-      ),
-      CardActionItem(
-        icon: SvgPicture.asset(
-          'assets/images/message-dots-circle.svg',
-          width: 20,
-          height: 20,
-        ),
-        label: 'المحادثة',
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ChatHistory()),
-          );
-        },
-      ),
-
-      CardActionItem(
-        icon: SvgPicture.asset(
-          'assets/images/annotation-info.svg',
-          width: 20,
-          height: 20,
-        ),
-        label: 'الشروط و الاحكام',
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => InfoScreen()),
-          );
-        },
-      ),
-      CardActionItem(
-        icon: SvgPicture.asset(
-          'assets/images/log-out-04-alt.svg',
-          width: 20,
-          height: 20,
-        ),
-        label: 'تسجيل خروج',
-        onTap: () {
-          print('Logout');
-        },
-      ),
-    ];
     return Scaffold(
       backgroundColor: AppTheme.background,
-
       appBar: AppBar(
         backgroundColor: AppTheme.fieldBackground,
         centerTitle: true,
@@ -92,7 +57,6 @@ class MoreScreen extends StatelessWidget {
           ),
         ),
       ),
-
       body: Column(
         children: [
           Padding(
@@ -104,84 +68,184 @@ class MoreScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 color: const Color(0xff00394C),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AccountScreen(),
-                          ),
-                        );
-                      },
-                      icon: SvgPicture.asset('assets/images/edit-05.svg'),
-                    ),
-                  ),
+              child: BlocBuilder<AuthCubit, AuthState>(
+                builder: (context, state) {
+                  String name = StorageHelper.getUserName();
+                  String phone = StorageHelper.getUserPhone();
+                  bool isLoading = false;
 
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                  if (state is ProfileLoaded) {
+                    name = state.name;
+                    phone = state.phone;
+                  } else if (state is ProfileLoading) {
+                    isLoading = true;
+                  }
+
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AccountScreen(),
+                              ),
+                            );
+                          },
+                          icon: SvgPicture.asset('assets/images/edit-05.svg'),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
                           children: [
-                            Text(
-                              'كريم خليل السيد',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 14,
-                                color: AppTheme.labelColor,
-                              ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                isLoading
+                                    ? Container(
+                                        width: 90,
+                                        height: 12,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white24,
+                                          borderRadius: BorderRadius.circular(6),
+                                        ),
+                                      )
+                                    : Text(
+                                        name,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 14,
+                                          color: AppTheme.labelColor,
+                                        ),
+                                      ),
+                                const SizedBox(height: 4),
+                                isLoading
+                                    ? Container(
+                                        width: 110,
+                                        height: 10,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white12,
+                                          borderRadius: BorderRadius.circular(6),
+                                        ),
+                                      )
+                                    : Text(
+                                        phone.isEmpty ? '—' : phone,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 14,
+                                          color: AppTheme.hintColor,
+                                        ),
+                                      ),
+                              ],
                             ),
-                            Text(
-                              '+9054545656',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14,
-                                color: AppTheme.hintColor,
-                              ),
+                            const SizedBox(width: 8),
+                            CircleAvatar(
+                              backgroundColor: AppTheme.fieldBorder,
+                              radius: 25,
+                              child: Icon(Icons.person, color: AppTheme.labelColor),
                             ),
                           ],
                         ),
-
-                        const SizedBox(width: 8),
-
-                        CircleAvatar(
-                          backgroundColor: AppTheme.fieldBorder,
-                          radius: 25,
-                          child: Icon(Icons.person, color: AppTheme.labelColor),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ),
-          SizedBox(height: 40),
-
+          const SizedBox(height: 40),
           Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              itemCount: actions.length,
-              itemBuilder: (context, index) {
-                final item = actions[index];
+            child: Builder(builder: (context) {
+              final List<CardActionItem> actions = [
+                CardActionItem(
+                  icon: SvgPicture.asset('assets/images/globe-02.svg', width: 20, height: 20),
+                  label: 'اللغة',
+                  onTap: () {},
+                ),
+                CardActionItem(
+                  icon: SvgPicture.asset('assets/images/message-dots-circle.svg', width: 20, height: 20),
+                  label: 'المحادثة',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ChatHistory()),
+                    );
+                  },
+                ),
+                CardActionItem(
+                  icon: SvgPicture.asset('assets/images/annotation-info.svg', width: 20, height: 20),
+                  label: 'الشروط و الاحكام',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => InfoScreen()),
+                    );
+                  },
+                ),
+                CardActionItem(
+                  icon: SvgPicture.asset('assets/images/log-out-04-alt.svg', width: 20, height: 20),
+                  label: 'تسجيل خروج',
+                  onTap: () async {
+                    final confirmed = await showDialog<bool>(
+                      context: context,
+                      builder: (ctx) => AlertDialog(
+                        backgroundColor: AppTheme.fieldBackground,
+                        title: Text('تأكيد تسجيل الخروج',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: AppTheme.labelColor, fontWeight: FontWeight.w700)),
+                        content: Text('هل أنت متأكد أنك تريد تسجيل الخروج؟',
+                            textAlign: TextAlign.center, style: TextStyle(color: AppTheme.hintColor)),
+                        actionsAlignment: MainAxisAlignment.spaceBetween,
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(ctx, false),
+                            child: Text('إلغاء', style: TextStyle(color: AppTheme.hintColor)),
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                            onPressed: () => Navigator.pop(ctx, true),
+                            child: const Text('خروج', style: TextStyle(color: Colors.white)),
+                          ),
+                        ],
+                      ),
+                    );
+                    if (confirmed != true) return;
+                    if (!context.mounted) return;
+                    await context.read<AuthCubit>().logout();
+                    if (!context.mounted) return;
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (_) => const LoginScreen()),
+                      (_) => false,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('تم تسجيل الخروج بنجاح'), backgroundColor: Colors.green),
+                    );
+                  },
+                ),
+              ];
 
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: CustomCardAction(
-                    icon: item.icon,
-                    label: item.label,
-                    onTap: item.onTap,
-                  ),
-                );
-              },
-            ),
+              return ListView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                itemCount: actions.length,
+                itemBuilder: (context, index) {
+                  final item = actions[index];
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: CustomCardAction(
+                      icon: item.icon,
+                      label: item.label,
+                      onTap: item.onTap,
+                    ),
+                  );
+                },
+              );
+            }),
           ),
         ],
       ),
@@ -216,16 +280,13 @@ class CustomCardAction extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Icon(Icons.chevron_left, color: Colors.white70),
-
               Row(
                 children: [
                   Text(
                     label,
                     style: const TextStyle(color: Colors.white, fontSize: 16),
                   ),
-
                   const SizedBox(width: 8),
-
                   icon,
                 ],
               ),

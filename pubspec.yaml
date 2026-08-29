@@ -44,6 +44,11 @@ dependencies:
   date_format: ^2.0.9
   intl: ^0.20.3
   settings_ui: ^3.0.1
+  dio: ^5.11.0
+  flutter_bloc: ^9.1.1
+  shared_preferences: ^2.5.5
+  dartz: ^0.10.1
+  get_it: ^9.2.1
 
 dev_dependencies:
   flutter_test:

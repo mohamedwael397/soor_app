@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:soor_app/core/const/constans.dart';
+import 'package:soor_app/features/auth/Login screen/login_screen.dart';
 
 class PasswordChanged extends StatelessWidget {
   const PasswordChanged({super.key});
@@ -13,12 +14,8 @@ class PasswordChanged extends StatelessWidget {
         children: [
           Positioned(
             top: 450,
-            child: Image.asset(
-              "assets/images/Vector.png",
-              color: AppTheme.fieldBorder,
-            ),
+            child: Image.asset("assets/images/Vector.png", color: AppTheme.fieldBorder),
           ),
-
           Center(
             child: Padding(
               padding: const EdgeInsets.all(15.0),
@@ -26,41 +23,35 @@ class PasswordChanged extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SvgPicture.asset("assets/images/Illustration Success.svg"),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Text(
                     "تم بنجاح!️",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                      color: AppTheme.labelColor,
-                    ),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: AppTheme.labelColor),
                   ),
-                  SizedBox(height: 10),
-
+                  const SizedBox(height: 10),
                   Text(
                     "تم تغيير كلمة المرور بنجاح",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: AppTheme.labelColor,
-                    ),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: AppTheme.labelColor),
                   ),
-                  SizedBox(height: 150),
-                  Container(
+                  const SizedBox(height: 150),
+                  SizedBox(
                     width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: AppTheme.primaryColor,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: MaterialButton(
-                      onPressed: () {},
+                    height: 52,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (_) => const LoginScreen()),
+                          (_) => false,
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppTheme.primaryColor,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      ),
                       child: Text(
                         "تسجيل دخول",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14,
-                          color: AppTheme.labelColor,
-                        ),
+                        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: AppTheme.labelColor),
                       ),
                     ),
                   ),

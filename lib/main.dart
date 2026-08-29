@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soor_app/core/const/constans.dart';
+import 'package:soor_app/core/di/di.dart';
+import 'package:soor_app/core/utils/storage_helper.dart';
+import 'package:soor_app/features/auth/logic/auth_cubit.dart';
 import 'package:soor_app/features/home/home.dart';
+import 'package:soor_app/features/auth/Login screen/login_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await StorageHelper.init();
+  await initDependencies();
 
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -22,6 +30,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: Home(), debugShowCheckedModeBanner: false);
+    return BlocProvider(
+      create: (_) => sl<AuthCubit>(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: StorageHelper.isLoggedIn ? const Home() : const LoginScreen(),
+      ),
+    );
   }
 }
