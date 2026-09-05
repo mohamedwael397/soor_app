@@ -9,27 +9,23 @@ class ServicesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> services = [
       {
+        "id": "1",
         "icon": Icons.person_outline,
         "colors": [Color(0xffE1801E), Color(0xff61370D)],
         "title": "طلب فرد",
         "description": "وصف الخدمة هنا",
         "onpress": () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => LocationScreen()),
-          );
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const LocationScreen(serviceId: "1")));
         },
       },
       {
+        "id": "2",
         "icon": Icons.people_outline,
         "colors": [Color(0xff007AA2), Color(0xff00394C)],
         "title": "طلب شركة",
         "description": "وصف الخدمة هنا",
         "onpress": () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => LocationScreen()),
-          );
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const LocationScreen(serviceId: "2")));
         },
       },
     ];

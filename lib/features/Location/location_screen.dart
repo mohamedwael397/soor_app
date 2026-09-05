@@ -6,7 +6,8 @@ import 'package:soor_app/core/const/constans.dart';
 import 'package:soor_app/features/Location/confirm_location.dart';
 
 class LocationScreen extends StatefulWidget {
-  const LocationScreen({super.key});
+  final String serviceId;
+  const LocationScreen({super.key, this.serviceId = "1"});
 
   @override
   State<LocationScreen> createState() => _LocationScreenState();
@@ -316,6 +317,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                   builder: (context) => ConfirmLocationScreen(
                                     locationName: address,
                                     location: currentLocation!,
+                                    serviceId: widget.serviceId,
                                   ),
                                 ),
                               );

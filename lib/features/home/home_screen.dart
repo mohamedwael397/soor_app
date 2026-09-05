@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:soor_app/core/const/constans.dart';
-import 'package:soor_app/features/Chat/cahtScreen.dart';
+import 'package:soor_app/features/more%20Screen/chat_history.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -60,10 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Cahtscreen()),
-          );
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatHistory()));
         },
         shape: const CircleBorder(),
         backgroundColor: AppTheme.primaryColor,
